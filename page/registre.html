@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - OFPPT Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-image: url('../photo-ofppt.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            backdrop-filter: blur(3px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Main Content -->
+    <main class="flex-1 flex items-center justify-center py-12 px-4"> <!-- Ajout de px-4 pour les marges latérales -->
+        <div class="w-full max-w-xs sm:max-w-md bg-white/90 rounded-lg shadow-lg p-4 sm:p-6"> <!-- Ajout de bg-white/90 pour la transparence -->
+            <div class="space-y-2">
+                <h1 class="text-2xl font-bold">Créer un compte</h1>
+                <p id="step-description" class="text-gray-600">
+                    Commencez par renseigner vos informations personnelles.
+                </p>
+            </div>
+            <form id="registration-form" class="space-y-4 mt-4">
+                <!-- Step 1: Personal Information -->
+                <div id="step-1">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label for="firstName" class="block text-sm font-medium text-gray-700">Prénom</label>
+                            <input
+                                type="text"
+                                id="firstName"
+                                placeholder="Prénom"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                required
+                            />
+                        </div>
+                        <div class="space-y-2">
+                            <label for="lastName" class="block text-sm font-medium text-gray-700">Nom</label>
+                            <input
+                                type="text"
+                                id="lastName"
+                                placeholder="Nom"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                required
+                            />
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="votre@email.com"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        />
+                    </div>
+                    <div class="space-y-2">
+                        <label for="password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+                        <input
+                            type="password"
+                            id="password"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        />
+                    </div>
+                    <button
+                        type="button"
+                        onclick="nextStep()"
+                        class="w-full mt-3 px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700"
+                    >
+                        Continuer
+                    </button>
+                </div>
+
+                <!-- Step 2: Study Information -->
+                <div id="step-2" class="hidden">
+                    <div class="space-y-2">
+                        <label for="level" class="block text-sm font-medium text-gray-700">Niveau de formation</label>
+                        <select
+                            id="level"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        >
+                            <option value="" disabled selected>Sélectionnez votre niveau</option>
+                            <option value="technicien">Technicien</option>
+                            <option value="technicien_specialise">Technicien Spécialisé</option>
+                            <option value="qualifiant">Qualifiant</option>
+                        </select>
+                    </div>
+                    <div class="space-y-2 mt-4">
+                        <label for="year" class="block text-sm font-medium text-gray-700">Année d'étude</label>
+                        <select
+                            id="year"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        >
+                            <option value="" disabled selected>Sélectionnez votre année</option>
+                            <option value="premiere">Première année</option>
+                            <option value="deuxieme">Deuxième année</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-2 mt-5">
+                        <button
+                            type="submit"
+                            class="w-full px-4 py-2 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600"
+                        >
+                            S'inscrire
+                        </button>
+                        <button
+                            type="button"
+                            onclick="prevStep()"
+                            class="w-full px-4 py-2 border border-blue-500 text-blue-500 font-medium rounded-lg hover:bg-blue-50 flex items-center justify-center"
+                        >
+                            <i class="fa-solid fa-arrow-left text-blue-500 mr-2"></i>
+                            Retour
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Login Link -->
+            <div class="mt-4 text-center text-sm">
+                Vous avez déjà un compte?
+                <a href="login_page.html" class="text-blue-500 hover:underline">Se connecter</a>
+            </div>
+        </div>
+    </main>
+
+ <script src="../js/registre.js"></script>
+</body>
+</html>

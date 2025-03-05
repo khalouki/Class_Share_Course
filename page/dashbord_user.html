@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord - OFPPT Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+
+<body class="bg-[#bcccd94f] min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full border-b bg-white">
+        <div class="container flex h-16 items-center justify-between mx-auto px-4">
+            <div style="font-size:30px ;" class="flex items-center gap-2">
+                <button class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+
+                    <span class="sr-only">Toggle menu</span>
+                </button>
+                <i class="fa-solid fa-graduation-cap text-blue-500"></i>
+                <span class="text-xl font-bold tracking-tight">OFPPT Connect</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex items-center gap-2">
+                    <span class="text-sm font-medium">ABDELKHALEK ESSAID</span>
+                </div>
+                <button class="p-2 rounded-lg hover:bg-gray-100">
+                    <i class="lucide lucide-log-out h-4 w-4"></i>
+                    <a href="../index.html"><span class="hidden md:inline">Déconnexion</span></a>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full px-4 sm:px-6 lg:px-8 py-6">
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold tracking-tight">Tableau de bord</h1>
+            <p class="text-gray-600">
+                Bienvenue Abdelkhalek, voici vos cours pour votre formation de technicien spécialisé.
+            </p>
+        </div>
+
+        <!-- Tabs for Year Selection -->
+        <div class="mb-8">
+            <div class="flex gap-2">
+                <button data-tab="premiere" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Première année</button>
+                <button data-tab="deuxieme"
+                    class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200">Deuxième année</button>
+            </div>
+
+            <!-- First Year Courses -->
+            <div id="premiere" data-tab-content class="mt-4">
+                <h2 class="text-xl font-semibold mb-4">Cours de première année</h2>
+                <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <!-- Course Card 1 -->
+                    <div class="bg-white animate__animated animate__fadeInUp rounded-lg shadow-lg overflow-hidden">
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold line-clamp-1">Programmation orientée objet</h3>
+                            <p class="text-sm text-gray-600 line-clamp-2 mb-4">Concepts avancés de la POO</p>
+                            <div class="space-y-2">
+                                <div class="text-sm font-medium">Progression: 65%</div>
+                                <div class="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-blue-500" style="width: 65%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <button class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Accéder
+                                au cours</button>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 2 -->
+                    <div class="bg-white animate__animated animate__fadeInUp rounded-lg shadow-lg overflow-hidden">
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold line-clamp-1">Réseaux informatiques</h3>
+                            <p class="text-sm text-gray-600 line-clamp-2 mb-4">Architecture et protocoles réseau</p>
+                            <div class="space-y-2">
+                                <div class="text-sm font-medium">Progression: 55%</div>
+                                <div class="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-blue-500" style="width: 55%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <button class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Accéder
+                                au cours</button>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 3 -->
+                    <div class="bg-white animate__animated animate__fadeInUp rounded-lg shadow-lg overflow-hidden">
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold line-clamp-1">Systèmes d'exploitation</h3>
+                            <p class="text-sm text-gray-600 line-clamp-2 mb-4">Administration et configuration des OS
+                            </p>
+                            <div class="space-y-2">
+                                <div class="text-sm font-medium">Progression: 45%</div>
+                                <div class="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-blue-500" style="width: 45%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <button class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Accéder
+                                au cours</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Year Courses -->
+            <div id="deuxieme" data-tab-content class="mt-4 hidden">
+                <h2 class="text-xl font-semibold mb-4">Cours de deuxième année</h2>
+                <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <!-- Course Card 4 -->
+                    <div class="bg-white rounded-lg animate__animated animate__fadeInUp shadow-lg overflow-hidden">
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold line-clamp-1">Développement d'applications mobiles</h3>
+                            <p class="text-sm text-gray-600 line-clamp-2 mb-4">Création d'apps pour Android et iOS</p>
+                            <div class="space-y-2">
+                                <div class="text-sm font-medium">Progression: 25%</div>
+                                <div class="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-blue-500" style="width: 25%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <button class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Accéder
+                                au cours</button>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 5 -->
+                    <div class="bg-white rounded-lg animate__animated animate__fadeInUp shadow-lg overflow-hidden">
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold line-clamp-1">Intelligence artificielle</h3>
+                            <p class="text-sm text-gray-600 line-clamp-2 mb-4">Fondements de l'IA et machine learning
+                            </p>
+                            <div class="space-y-2">
+                                <div class="text-sm font-medium">Progression: 20%</div>
+                                <div class="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-blue-500" style="width: 20%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <button class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Accéder
+                                au cours</button>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 6 -->
+                    <div class="bg-white rounded-lg animate__animated animate__fadeInUp shadow-lg overflow-hidden">
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold line-clamp-1">Projet de fin d'études avancé</h3>
+                            <p class="text-sm text-gray-600 line-clamp-2 mb-4">Développement d'un projet complexe</p>
+                            <div class="space-y-2">
+                                <div class="text-sm font-medium">Progression: 15%</div>
+                                <div class="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-blue-500" style="width: 15%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <button class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Accéder
+                                au cours</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const tabs = document.querySelectorAll("[data-tab]");
+        const tabContents = document.querySelectorAll("[data-tab-content]");
+
+        tabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+                const target = tab.dataset.tab;
+
+                // Remove active styles from all tabs
+                tabs.forEach((t) => {
+                    t.classList.remove("bg-blue-500", "text-white");
+                    t.classList.add("bg-gray-100", "text-gray-700", "hover:bg-gray-200");
+                });
+
+                // Add active styles to the clicked tab
+                tab.classList.remove("bg-gray-100", "text-gray-700", "hover:bg-gray-200");
+                tab.classList.add("bg-blue-500", "text-white");
+
+                // Hide all tab contents
+                tabContents.forEach((content) => content.classList.add("hidden"));
+
+                // Show the target tab content
+                document.getElementById(target).classList.remove("hidden");
+            });
+        });
+
+        // Activate the first tab by default
+        tabs[0].click();
+    </script>
+</body>
+
+</html>

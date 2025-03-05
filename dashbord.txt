@@ -1,0 +1,247 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { BookOpen, GraduationCap, LogOut, Menu, User } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+
+// Mock data for courses
+const courseData = {
+  technicien: {
+    premiere: [
+      {
+        id: 1,
+        title: "Introduction à la programmation",
+        description: "Bases de la programmation et algorithmique",
+        progress: 75,
+      },
+      { id: 2, title: "Mathématiques pour techniciens", description: "Algèbre et géométrie appliquées", progress: 60 },
+      {
+        id: 3,
+        title: "Anglais technique",
+        description: "Vocabulaire technique et communication professionnelle",
+        progress: 40,
+      },
+    ],
+    deuxieme: [
+      { id: 4, title: "Développement web", description: "HTML, CSS et JavaScript", progress: 30 },
+      { id: 5, title: "Bases de données", description: "Conception et manipulation de bases de données", progress: 50 },
+      {
+        id: 6,
+        title: "Projet de fin d'études",
+        description: "Conception et réalisation d'un projet technique",
+        progress: 10,
+      },
+    ],
+  },
+  technicien_specialise: {
+    premiere: [
+      { id: 7, title: "Programmation orientée objet", description: "Concepts avancés de la POO", progress: 65 },
+      { id: 8, title: "Réseaux informatiques", description: "Architecture et protocoles réseau", progress: 55 },
+      { id: 9, title: "Systèmes d'exploitation", description: "Administration et configuration des OS", progress: 45 },
+    ],
+    deuxieme: [
+      {
+        id: 10,
+        title: "Développement d'applications mobiles",
+        description: "Création d'apps pour Android et iOS",
+        progress: 25,
+      },
+      {
+        id: 11,
+        title: "Intelligence artificielle",
+        description: "Fondements de l'IA et machine learning",
+        progress: 20,
+      },
+      {
+        id: 12,
+        title: "Projet de fin d'études avancé",
+        description: "Développement d'un projet complexe",
+        progress: 15,
+      },
+    ],
+  },
+  qualifiant: {
+    premiere: [
+      {
+        id: 13,
+        title: "Initiation à l'informatique",
+        description: "Utilisation de base des outils informatiques",
+        progress: 80,
+      },
+      {
+        id: 14,
+        title: "Communication professionnelle",
+        description: "Techniques de communication en milieu professionnel",
+        progress: 70,
+      },
+      { id: 15, title: "Bureautique", description: "Word, Excel et PowerPoint", progress: 90 },
+    ],
+    deuxieme: [
+      {
+        id: 16,
+        title: "Maintenance informatique",
+        description: "Diagnostic et réparation de problèmes matériels",
+        progress: 60,
+      },
+      { id: 17, title: "Infographie", description: "Création et manipulation d'images numériques", progress: 40 },
+      {
+        id: 18,
+        title: "Stage pratique",
+        description: "Application des connaissances en milieu professionnel",
+        progress: 30,
+      },
+    ],
+  },
+}
+
+// Mock user data
+const userData = {
+  firstName: "Mohammed",
+  lastName: "Alami",
+  email: "mohammed.alami@example.com",
+  level: "technicien_specialise",
+  year: "premiere",
+}
+
+export default function DashboardPage() {
+  const router = useRouter()
+  const [selectedYear, setSelectedYear] = useState(userData.year)
+
+  // Get courses based on user level and selected year
+  const userCourses =
+    courseData[userData.level as keyof typeof courseData]?.[selectedYear as keyof typeof courseData.technicien] || []
+
+  const handleLogout = () => {
+    router.push("/")
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <header className="sticky top-0 z-50 w-full border-b bg-background">
+        <div className="container flex h-16 items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="md:hidden">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Toggle menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[240px] sm:w-[300px]">
+                <nav className="flex flex-col gap-4 py-4">
+                  <div className="px-4 py-2">
+                    <div className="flex items-center gap-2 mb-4">
+                      <GraduationCap className="h-6 w-6 text-primary" />
+                      <span className="text-xl font-bold tracking-tight">Iddé</span>
+                    </div>
+                    <div className="flex items-center gap-4 mb-4 p-2 rounded-lg bg-muted">
+                      <User className="h-4 w-4 text-muted-foreground" />
+                      <div>
+                        <p className="text-sm font-medium">
+                          {userData.firstName} {userData.lastName}
+                        </p>
+                        <p className="text-xs text-muted-foreground">{userData.email}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="px-4 py-2">
+                    <h3 className="mb-2 text-sm font-medium">Menu</h3>
+                    <div className="space-y-1">
+                      <Button variant="ghost" className="w-full justify-start">
+                        <BookOpen className="mr-2 h-4 w-4" />
+                        Mes cours
+                      </Button>
+                      <Button variant="ghost" className="w-full justify-start" onClick={handleLogout}>
+                        <LogOut className="mr-2 h-4 w-4" />
+                        Déconnexion
+                      </Button>
+                    </div>
+                  </div>
+                </nav>
+              </SheetContent>
+            </Sheet>
+            <GraduationCap className="h-6 w-6 text-primary" />
+            <span className="text-xl font-bold tracking-tight">Iddé</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="hidden md:flex items-center gap-2">
+              <span className="text-sm font-medium">
+                {userData.firstName} {userData.lastName}
+              </span>
+            </div>
+            <Button variant="ghost" size="sm" onClick={handleLogout}>
+              <LogOut className="h-4 w-4 mr-2" />
+              <span className="hidden md:inline">Déconnexion</span>
+            </Button>
+          </div>
+        </div>
+      </header>
+      <main className="flex-1 container py-6">
+        <div className="mb-6">
+          <h1 className="text-2xl font-bold tracking-tight">Tableau de bord</h1>
+          <p className="text-muted-foreground">
+            Bienvenue {userData.firstName}, voici vos cours pour votre formation{" "}
+            {userData.level === "technicien"
+              ? "de technicien"
+              : userData.level === "technicien_specialise"
+                ? "de technicien spécialisé"
+                : "qualifiante"}
+            .
+          </p>
+        </div>
+
+        <Tabs defaultValue={selectedYear} onValueChange={setSelectedYear} className="mb-8">
+          <TabsList>
+            <TabsTrigger value="premiere">Première année</TabsTrigger>
+            <TabsTrigger value="deuxieme">Deuxième année</TabsTrigger>
+          </TabsList>
+          <TabsContent value="premiere" className="mt-4">
+            <h2 className="text-xl font-semibold mb-4">Cours de première année</h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {userCourses.map((course) => (
+                <CourseCard key={course.id} course={course} />
+              ))}
+            </div>
+          </TabsContent>
+          <TabsContent value="deuxieme" className="mt-4">
+            <h2 className="text-xl font-semibold mb-4">Cours de deuxième année</h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {userCourses.map((course) => (
+                <CourseCard key={course.id} course={course} />
+              ))}
+            </div>
+          </TabsContent>
+        </Tabs>
+      </main>
+    </div>
+  )
+}
+
+// Course card component
+function CourseCard({ course }) {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle className="line-clamp-1">{course.title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p className="text-sm text-muted-foreground line-clamp-2 mb-4">{course.description}</p>
+        <div className="space-y-2">
+          <div className="text-sm font-medium">Progression: {course.progress}%</div>
+          <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
+            <div className="h-full bg-primary" style={{ width: `${course.progress}%` }} />
+          </div>
+        </div>
+      </CardContent>
+      <CardFooter>
+        <Button className="w-full">Accéder au cours</Button>
+      </CardFooter>
+    </Card>
+  )
+}
+
